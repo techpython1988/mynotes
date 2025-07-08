@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>RSRW GORAKHPUR SYNOP</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <style>
+    body {
+      background: #a1d2ae;
+      padding-top: 60px;
+    }
+
+    .note-card {
+      border-left: 5px solid #007bff;
+      background: #0dd656;
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      box-shadow: 0 2px 5px rgba(0, 0, 1, 0);
+    }
+
+    .note-time {
+      font-size: 0.85rem;
+      color: #bc2828;
+    }
+
+    .navbar {
+      background: #007bff;
+    }
+
+    .navbar-brand,
+    .btn-light {
+      color: #21bd48 !important;
+    }
+
+    @media print {
+      .d-print-none {
+        display: none !important;
+      }
+    }
+
+    footer {
+      text-align: center;
+      padding: 3px;
+      background-color: DarkSalmon;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar fixed-top">
+    <a class="navbar-brand" href="{{ url_for('index') }}">RSRW Gorakhpur</a>
+    <div class="ml-auto">
+      <a class="btn btn-light mr-2 d-print-none" href="{{ url_for('print_notes') }}">
+        Print SYNOP
+      </a>
+      <button class="btn btn-light d-print-none" onclick="window.print()">
+        Print PAGE
+      </button>
+    </div>
+  </nav>
+
+
+  <div class="container">
+    {% block content %}{% endblock %}
+  </div>
+  <footer>
+    <p>Author: SHIV RATAN (S.A.) IMD</p>
+    <p><a href="mailto:techpython1988@gmail.com">techpython1988@gmail.com</a></p>
+  </footer>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+
+  <h2>Add a New SYNOP</h2>
+  <form action="{{ url_for('add_note') }}" method="POST">
+    <div class="form-group">
+      <textarea name="content"
+        class="form-control"
+        rows="4"
+        placeholder="Type your SYNOP..."
+        required></textarea>
+    </div>
+    <button class="btn btn-primary mb-4">Save SYNOP</button>
+  </form>
+
+  <h3>Your SYNOP</h3>
+  <hr>
+  {% for note in notes %}
+    <div class="note-card">
+      <div class="note-time">{{ note.created_at }}</div>
+      <p>{{ note.content }}</p>
+      <a href="{{ url_for('edit', note_id=note.id) }}"
+        class="btn btn-sm btn-outline-secondary">Edit</a>
+      <a href="{{ url_for('delete', note_id=note.id) }}"
+        class="btn btn-sm btn-outline-danger">Delete</a>
+    </div>
+  {% else %}
+    <p>No notes yet. Start by adding one above!</p>
+  {% endfor %}
+
+{% endblock %}

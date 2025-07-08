@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Print Notes Table</title>
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      padding: 2rem;
+    }
+    table {
+      table-layout: auto;
+      width: 100px; 
+     
+      border-collapse: collapse;
+    }
+    th {
+      border: 1px solid #333;
+      padding: 0.5rem;
+      text-align: center;
+    }
+    td {
+      border: 1px solid #333;
+      padding: 0.5rem;
+      text-align: left;
+    }
+    th {
+      background: #f8f6f600;
+      color: #390bc3;
+    }
+  </style>
+</head>
+<body onload="window.print()">
+  <h2 style="color: rgb(110, 214, 110);">RSRW GORAKHPUR SURFACE OBSERVATION</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th contenteditable="" >SYNOP </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for note in notes %}
+        <tr>
+          <td>{{ note.content }}</td>
+        </tr>
+      {% else %}
+        <tr>
+          <td><em>No notes available.</em></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
+</html>
